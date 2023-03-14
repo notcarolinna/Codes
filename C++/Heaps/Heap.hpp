@@ -6,24 +6,24 @@ class Heap
 private:
     int *v;
     int used; // Elementos das sub-árvores
-
     int left(int i);
     int right(int i);
     int parent(int i);
-
-    void sift_up(int pos);
-    void sift_down(int pos);
-
     int len(int a);
-    void print(int b, int elem, int sp);
 
 public:
     Heap();
     ~Heap();
-    void put(int data); // int data: valor do elemento que será inserido pela função no heap
-    int get();          // Remove e retorna a raíz e substitui pelo elemento adicionado pelo sift_down
-    void print();
+    void put(int data); // Adiciona
+    int get();          // Remove 
 
+    void sift_up(int pos);
+    void sift_down(int pos);
+    void print(int b, int elem, int sp);
+
+    void sift_up();
+    void sift_down();
+    void print();
 };
 
 #endif
