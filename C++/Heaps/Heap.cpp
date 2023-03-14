@@ -176,9 +176,3 @@ void Heap::print(int b, int elem, int sp)
     }
 }
 
-void Heap::print()
-{
-    cout << endl;
-    print(0, 1, 64);
-    cout << endl;
-}
