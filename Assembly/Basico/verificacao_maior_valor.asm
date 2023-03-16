@@ -1,6 +1,6 @@
-# int a = 4, b = 7, maior;
-# main() {
-#   if(a > b)
+; int a = 4, b = 7, maior;
+; main() {
+;   if(a > b)
 #     maior = a;
 #   else
 #     maior = b;
