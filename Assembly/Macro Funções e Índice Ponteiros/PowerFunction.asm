@@ -1,10 +1,10 @@
 ;	int power(int base, int expoente) {
-;   int pow = 1;   
-;   while(expoente >= 1) { // negativo n�o � tratado
+;   	int pow = 1;   
+;   	while(expoente >= 1) { 
 ;  	pow = pow * base;
 ; 	expoente--;
 ;   }
-;   return pow;
+;   	return pow;
 ; 	}
 
 ; 	int a = 2, b = 3;
