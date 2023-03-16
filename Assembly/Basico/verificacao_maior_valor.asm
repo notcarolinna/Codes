@@ -31,7 +31,7 @@ a_Maior:
 	sw	$t0, maior		;    maior = a;
 
 fim:					; }
-	j	fim				# faz um salto para o fim do programa
+	j	fim			; faz um salto para o fim do programa
 
 ; lw: 	carrega um valor da memória para o registrador
 ; bgt: 	faz um salto condicional se o primeiro registrador for maior que o segundo,
