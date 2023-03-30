@@ -1,4 +1,5 @@
 #include "HashTable.h"
+#include <iostream>
 
 HashTable::HashTable(int capacidade) : capacidade_(capacidade) {
 
@@ -74,6 +75,24 @@ bool HashTable::busca(int key, int& value) const {
     }
     return false;
 }
+
+void HashTable::print() {
+    for (int i = 0; i < capacidade_; i++) {
+        Node* node = tabela[i];
+        if (node) {
+            std::cout << "Indice " << i << ": ";
+            while (node) {
+                std::cout << "(" << node->key << ", " << node->value << ")";
+                node = node->next;
+                if (node) {
+                    std::cout << " -> ";
+                }
+            }
+            std::cout << std::endl;
+        }
+    }
+}
+
 
 int HashTable::hash(int key) const {
     // Função de hash simples usando o operador de resto (%)
