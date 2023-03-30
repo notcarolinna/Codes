@@ -24,11 +24,6 @@ o tamanho do vetor.
 
 */
 
-
-
-
-
-
 int main() {
 
 	int capacidade = 0, op = 0;
@@ -45,7 +40,8 @@ int main() {
 		cout << "1. Adicionar um valor" << endl;
 		cout << "2. Remover um valor" << endl;
 		cout << "3. Buscar um valor" << endl;
-		cout << "4. Sair" << endl;
+		cout << "4. Exibir a hash" << endl;
+		cout << "5. Encerrar o programa" << endl;
 		cin >> op;
 
 
@@ -86,18 +82,24 @@ int main() {
 			}
 			break;
 
+
 		case 4:
+
+			hash.print();
+			break;
+
+		case 5:
 
 			cout << "Programa encerrado" << endl;
 			break;
 
 		default:
 
-			cout << "Erro: funcionalidade invalida." << endl;
+			cout << "Erro: funcionalidade inva lida." << endl;
 			break;
 		}
 
-	} while (op != 4);
+	} while (op != 5);
 
 	return 0;
 }
