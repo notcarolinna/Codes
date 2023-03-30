@@ -19,6 +19,7 @@ public:
 	void insert(int key, int value);
 	bool remove(int key);
 	bool busca(int key, int& value) const;
+	void print();
 
 
 };
