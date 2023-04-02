@@ -121,11 +121,14 @@ int main() {
 
     cout << "Digite o tamanho do vetor: ";
     cin >> tamanho;
-    v.resize(tamanho);
 
-    cout << "Digite os elementos do vetor:\n";
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<int> dis(1, 10000);
+
+    v.resize(tamanho);
     for (int i = 0; i < tamanho; i++) {
-      cin >> v[i];
+      v[i] = dis(gen);
     }
 
     auto inicio = chrono::high_resolution_clock::now();
@@ -148,7 +151,7 @@ int main() {
       cout << "Selection Sort:\n";
       break;
     default:
-      cout << "Opçãoo inválida!\n";
+      cout << "Opção inválida!\n";
       continue;
     }
 
