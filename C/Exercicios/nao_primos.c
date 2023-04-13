@@ -1,8 +1,13 @@
 #include <math.h>
 #include <stdio.h>
 
+/*
+O programa abaixo retorna os números não primos entre A e B, calcula a soma de
+todos esses valores e depois o produto de cada dígito da soma.
+  */
+
 int main() {
-  int a, b, primo, count = 0, soma = 0;
+  int a, b, primo, count = 0, soma = 0, produto = 1;
 
   printf("Digite dois números inteiros positivos: ");
   scanf("%d %d", &a, &b);
@@ -33,13 +38,22 @@ int main() {
       printf("%d ", i);
       soma += i;
       count++;
-      if (count % 5 == 0) {
+      if (count % 10 == 0) {
         printf("\n");
       }
     }
   }
 
-  printf("\nA soma de todos os números não primos é: %d", soma);
+  printf("\n\nA soma de todos os números não primos é: %d", soma);
+
+  // Calcula o produto de cada dígito da soma
+  printf("\nO produto de cada dígito da soma é: ");
+  while (soma > 0) {
+    int digito = soma % 10;
+    produto *= digito;
+    soma /= 10;
+  }
+  printf("%d", produto);
 
   return 0;
 }
