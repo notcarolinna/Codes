@@ -87,7 +87,7 @@ void BinaryTree::buscaOrdenada() {
 void BinaryTree::buscaOrdenada(Node* node) {
 
 	// Percorre todos os nodos da árvore imprime cada um;
-	// A função não para quando encontra um determinado valor,
+	// A função não para quando encontra um determinado valor
 	// mas continua a percorrer todos os nodos da árvore
 
 	if (node != nullptr) {
