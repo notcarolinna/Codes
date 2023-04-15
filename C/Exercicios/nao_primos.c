@@ -14,7 +14,7 @@ int main() {
 
   printf("Os números não primos entre %d e %d são:\n", a, b);
 
-  for (int i = a; i <= b; i++) {
+  for (int i = a + 1; i < b; i++) {
     primo = 1; // 1 = verdadeiro
 
     // se um número for menor que 2, ele não tem chance alguma de ser primo,
@@ -46,11 +46,12 @@ int main() {
 
   printf("\n\nA soma de todos os números não primos é: %d", soma);
 
-  // Calcula o produto de cada dígito da soma
   printf("\nO produto de cada dígito da soma é: ");
   while (soma > 0) {
     int digito = soma % 10;
-    produto *= digito;
+    if (digito != 0) {
+      produto *= digito;
+    }
     soma /= 10;
   }
   printf("%d", produto);
