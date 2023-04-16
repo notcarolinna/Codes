@@ -16,7 +16,6 @@ private:
 
 public:
 	CompressedTrie();
-	~CompressedTrie();
 
 	void inserir(std::string palavra);
 	bool busca(std::string palavra);
