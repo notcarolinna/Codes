@@ -60,7 +60,7 @@ int BFS(char mapa[LINHAS][COLUNAS], Ponto inicio, Ponto final) {
 int main() {
 	char mapa[LINHAS][COLUNAS] = {
 		{ '0', '0', '3', 'X', '0', '0', 'X', '8', '0' },
-		{ '0', 'X', 'X', '0', '0', '0', '0', '0', '0' },
+		{ 'X', 'X', 'X', '0', '0', '0', '0', '0', '0' },
 		{ '0', '0', '0', '0', '9', '0', '0', 'X', '2' },
 		{ '0', '0', '0', '0', '0', '0', '0', 'X', 'X' },
 		{ '4', 'X', 'X', 'X', 'X', '0', '0', '0', '0' },
@@ -95,35 +95,34 @@ int main() {
 
 	Ponto posicao_atual = inicio;
 	int numero_atual = 1;
-	int movimentos_totais = 0;
-	while (numero_atual <= 9) {
-		Ponto proximo_numero;
-		bool encontrado = false;
-		for (int i = 0; i < LINHAS; i++) {
-			for (int j = 0; j < COLUNAS; j++) {
-				if (mapa[i][j] == '0' + numero_atual) {
-					proximo_numero.linha = i;
-					proximo_numero.coluna = j;
-					encontrado = true;
-					break;
-				}
-			}
-			if (encontrado) {
-				break;
-			}
-		}
+    int movimentos_totais = 0;
+    while (numero_atual <= 9) {
+        Ponto proximo_numero;
+        bool encontrado = false;
+        for (int i = 0; i < LINHAS; i++) {
+            for (int j = 0; j < COLUNAS; j++) {
+                if (mapa[i][j] == '0' + numero_atual) {
+                    proximo_numero.linha = i;
+                    proximo_numero.coluna = j;
+                    encontrado = true;
+                    break;
+                }
+            }
+            if (encontrado) {
+                break;
+            }
+        }
 
-		int distancia = BFS(mapa, posicao_atual, proximo_numero);
-		if (distancia == -1) {
-			//printf("Caminho entre os pontos inexistente\n");
-			return -1;
-		}
-		movimentos_totais += distancia;
-		posicao_atual = proximo_numero;
-		numero_atual++;
-	}
-
-	printf("Total de movimentos para percorrer todos os elementos de forma ordenada: %d\n", movimentos_totais);
+        int distancia = BFS(mapa, posicao_atual, proximo_numero);
+        if (distancia == -1) {
+            numero_atual++;
+            continue;
+        }
+        posicao_atual = proximo_numero;
+        movimentos_totais += distancia;
+        numero_atual++;
+    }
+    printf("Soma total dos movimentos necessarios: %d\n", movimentos_totais);
 
 	return 0;
 }
