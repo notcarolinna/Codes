@@ -4,53 +4,53 @@
 
 #define MAX 2000000
 
-void swim(int v[], int k);
-void put(int v[], int *size, int data);
-void sink(int v[], int size, int k);
-int get(int v[], int *size);
-void print(int v[], int size, int b, int elem, int sp);
-void sort(int v[], int size);
+void swim(int v[], int pos);
+void put(int v[], int *tam, int data);
+void sink(int v[], int tam, int pos);
+int get(int v[], int *tam);
+void print(int v[], int tam, int b, int elem, int sp);
+void sort(int v[], int tam);
 
-void swim(int v[], int k) {
-  while (k > 1 && v[k / 2] < v[k]) {
-    int tmp = v[k];
-    v[k] = v[k / 2];
-    v[k / 2] = tmp;
-    k = k / 2;
+void swim(int v[], int pos) {
+  while (pos > 1 && v[pos / 2] < v[pos]) {
+    int temp = v[pos];
+    v[pos] = v[pos / 2];
+    v[pos / 2] = temp;
+    pos = pos / 2;
   }
 }
 
-void put(int v[], int *size, int data) {
-  v[*size] = data;
-  swim(v, *size);
-  (*size)++;
+void put(int v[], int *tam, int data) {
+  v[*tam] = data;
+  swim(v, *tam);
+  (*tam)++;
 }
 
-void sink(int v[], int size, int k) {
-  while (2 * k <= size) {
-    int j = 2 * k;
-    if (j < size && v[j] < v[j + 1])
+void sink(int v[], int tam, int pos) {
+  while (2 * pos <= tam) {
+    int j = 2 * pos;
+    if (j < tam && v[j] < v[j + 1])
       j++;
-    if (v[k] >= v[j])
+    if (v[pos] >= v[j])
       break;
-    int tmp = v[k];
-    v[k] = v[j];
-    v[j] = tmp;
-    k = j;
+    int temp = v[pos];
+    v[pos] = v[j];
+    v[j] = temp;
+    pos = j;
   }
 }
 
-int get(int v[], int *size) {
+int get(int v[], int *tam) {
   int res = v[1];
-  v[1] = v[--(*size)];
-  sink(v, *size, 1);
+  v[1] = v[--(*tam)];
+  sink(v, *tam, 1);
   return res;
 }
 
-void print(int v[], int size, int b, int elem, int sp) {
+void print(int v[], int tam, int b, int elem, int sp) {
   int i, j;
 
-  for (j = 1; j < size; j++)
+  for (j = 1; j < tam; j++)
     std::cout << v[j] << " ";
   std::cout << "\n";
 
@@ -58,7 +58,7 @@ void print(int v[], int size, int b, int elem, int sp) {
     for (j = 0; j <= sp / 2; j++)
       std::cout << " ";
     for (i = b; i < b + elem; i++) {
-      if (i == size)
+      if (i == tam)
         return;
       std::cout << v[i];
       for (j = 0; j < sp; j++)
@@ -71,42 +71,31 @@ void print(int v[], int size, int b, int elem, int sp) {
   }
 }
 
-void sort(int v[], int size) {
-  for (int i = size / 2; i >= 1; i--) {
-    sink(v, size, i);
+void sort(int v[], int tam) {
+  for (int i = tam / 2; i >= 1; i--) {
+    sink(v, tam, i);
   }
-  for (int i = size; i > 1; i--) {
-    int tmp = v[1];
+  for (int i = tam; i > 1; i--) {
+    int temp = v[1];
     v[1] = v[i];
-    v[i] = tmp;
+    v[i] = temp;
     sink(v, i - 1, 1);
   }
 }
 
 int main() {
-  // Initialize random generator
   std::srand(std::time(0));
 
   int v[MAX + 1];
-  v[1] = 0; // Position 0 is not used
-  int size = 1;
+  v[1] = 0; 
+  int tam = 1;
 
   for (int i = 0; i < MAX; i++)
-    put(v, &size, std::rand() % (MAX * 10)); // Fill randomly
-
-  // print(v, size, 1, 1, 64);
-  // std::cout << "\n";
-
-  // Sort
+  put(v, &tam, std::rand() % (MAX * 10)); 
   long start = clock();
-  sort(v, size);
+  sort(v, tam);
   long end = clock();
-
-  // std::cout << "\nSorted:\n";
-  // for (int i = 1; i < size; i++)
-  //     std::cout << v[i] << " ";
-  // std::cout << "\n";
-
+  
   std::cout << "Time for " << MAX << " elements: " << (end - start) << " ns\n";
 
   return 0;
