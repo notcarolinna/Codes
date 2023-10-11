@@ -26,8 +26,8 @@ void Graph::addAresta(char inicio, char fim, int peso) {
 }
 
 int Graph::BFS(char inicio, char fim) {
-    std::vector<int> pai(numVertices, -1); // Inicializa os pais como -1
-    std::vector<int> custo(numVertices, std::numeric_limits<int>::max()); // Inicializa os custos com infinito
+    std::vector<int> pai(numVertices, -1); 
+    std::vector<int> custo(numVertices, std::numeric_limits<int>::max()); 
     custo[inicio - 'A'] = 0;
 
     std::priority_queue<std::pair<int, char>, std::vector<std::pair<int, char>>, std::greater<std::pair<int, char>>> filaPrioridade;
@@ -53,8 +53,7 @@ int Graph::BFS(char inicio, char fim) {
             }
         }
     }
-
-    return -1; // Se não houver caminho, retorne -1
+    return -1; 
 }
 
 int main() {
